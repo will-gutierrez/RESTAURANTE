@@ -1,0 +1,203 @@
+-- phpMyAdmin SQL Dump
+-- version 5.0.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 27-11-2020 a las 16:32:51
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.4.3
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `bga_hamburguesas`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `admi`
+--
+
+CREATE TABLE `admi` (
+  `identificacion` int(12) NOT NULL,
+  `Nombre` varchar(250) NOT NULL,
+  `Apellido` varchar(250) NOT NULL,
+  `clave` int(5) NOT NULL,
+  `Fecha` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `admi`
+--
+
+INSERT INTO `admi` (`identificacion`, `Nombre`, `Apellido`, `clave`, `Fecha`) VALUES
+(1019148288, 'Sebastian', 'Ortiz ', 1234, '2020-11-24');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mesas`
+--
+
+CREATE TABLE `mesas` (
+  `id` int(100) NOT NULL,
+  `mesas` varchar(250) NOT NULL,
+  `fecha` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `mesas`
+--
+
+INSERT INTO `mesas` (`id`, `mesas`, `fecha`) VALUES
+(1, 'mesa 1', '2020-11-24'),
+(2, 'mesa 2', '2020-11-24');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pedidos`
+--
+
+CREATE TABLE `pedidos` (
+  `id` int(100) NOT NULL,
+  `comida` varchar(250) NOT NULL,
+  `precio` int(100) NOT NULL,
+  `fecha` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `pedidos`
+--
+
+INSERT INTO `pedidos` (`id`, `comida`, `precio`, `fecha`) VALUES
+(2, 'perro caliente', 12000, '2020-11-25'),
+(3, 'hamburguesa', 10000, '2020-11-25');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `registro`
+--
+
+CREATE TABLE `registro` (
+  `id` int(100) NOT NULL,
+  `Usuario` varchar(250) NOT NULL,
+  `mesa` varchar(250) NOT NULL,
+  `total` int(250) NOT NULL,
+  `Fecha` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `registro`
+--
+
+INSERT INTO `registro` (`id`, `Usuario`, `mesa`, `total`, `Fecha`) VALUES
+(1, 'juan camilo gonzalez', 'mesa 1', 10000, '2020-11-24'),
+(6, 'camilo ariaz', 'mesa 1', 10000, '2020-11-25'),
+(7, 'majo', 'mesa 2', 10000, '2020-11-25'),
+(8, 'camilo ariaz', 'mesa 1', 12000, '2020-11-25'),
+(9, 'yecid', 'mesa 2', 30000, '2020-11-25');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `identificacion` int(12) NOT NULL,
+  `Nombre` varchar(250) NOT NULL,
+  `clave` int(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`identificacion`, `Nombre`, `clave`) VALUES
+(6881509, 'camilo ariaz', 1234),
+(1003559555, 'yecid', 4321);
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `admi`
+--
+ALTER TABLE `admi`
+  ADD PRIMARY KEY (`identificacion`);
+
+--
+-- Indices de la tabla `mesas`
+--
+ALTER TABLE `mesas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `registro`
+--
+ALTER TABLE `registro`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`identificacion`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `admi`
+--
+ALTER TABLE `admi`
+  MODIFY `identificacion` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1019148289;
+
+--
+-- AUTO_INCREMENT de la tabla `mesas`
+--
+ALTER TABLE `mesas`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `registro`
+--
+ALTER TABLE `registro`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `identificacion` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1003559556;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
